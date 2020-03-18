@@ -35,7 +35,7 @@ function checkParams(ctx) {
     .optional()
     .isQuality()
   if (ctx.request.url.indexOf('/resize/uri') > -1) {
-    ctx.checkParams('uri').isURL({ require_tld: false })
+    ctx.checkParams('uri').isURL()
   }
   return ctx.validationErrors()
 }
