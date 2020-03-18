@@ -16,13 +16,8 @@
     "cheerio": "^1.0.0-rc.3",
     "nodemon": "^2.0.2"
   },
-  "engines": {
-    "yarn": "1.22.*",
-    "node": "12.13.*"
-  },
+  "main": "server.js",
   "scripts": {
     "start": "node server.js"
-  },
-
-  "main": "server.js"
+  }
 }
