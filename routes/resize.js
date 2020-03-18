@@ -3,6 +3,9 @@ const koaValidator = require('koa-async-validator')
 const router = new Router({ prefix: '/resize' })
 const resize = require('../util/resizer')
 const { getCommonParams, checkParams } = require('../util/common')
+router.get('/', async (ctx, next) => {
+  ctx.body = 'success'
+})
 router.use(
   koaValidator({
     customValidators: {
