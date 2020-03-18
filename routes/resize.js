@@ -61,9 +61,8 @@ router.get('/uri/:uri/*', async (ctx, next) => {
     return
   }
   const options = getCommonParams(ctx)
-
   try {
-    const [img, format] = resize(imgPath, options)
+    const [img, format] = resize(ctx.params.uri, options)
     await img
       .toBuffer()
       .then(data => {
@@ -72,6 +71,7 @@ router.get('/uri/:uri/*', async (ctx, next) => {
           'Expires',
           new Date(Date.now() + 60 * 60 * 365 * 24).toUTCString()
         )
+        console.log('calles');
         ctx.type = format
         ctx.body = data
       })
@@ -80,6 +80,7 @@ router.get('/uri/:uri/*', async (ctx, next) => {
         ctx.body = 'error'
       })
   } catch (error) {
+    console.log(error)
     next(error)
   }
 })

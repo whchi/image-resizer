@@ -23,6 +23,7 @@ module.exports = (imagePath, params) => {
       chromaSubsampling: params.quality >= 90 ? '4:2:0' : '4:4:4',
     }
     type = mime.lookup(imagePath)
+
     if (type === 'image/png') {
       transform.png(options)
     } else {
