@@ -13,7 +13,9 @@ app.use(conditional())
 app.use(etag())
 app.use(userAgent())
 app.use(resizeRouter.routes())
-app.use(logger())
+// app.use(logger())
 app.use(serve(path.join(__dirname, 'public')))
 
-app.listen(5000)
+app.listen(5000, () => {
+  console.log('listen on 5000 port')
+})
