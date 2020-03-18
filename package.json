@@ -20,5 +20,8 @@
     "yarn": "1.22.*",
     "node": "12.13.*"
   },
+  "scripts": {
+    "start": "node server.js"
+  },
   "main": "server.js"
 }
