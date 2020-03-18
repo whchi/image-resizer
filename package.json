@@ -17,7 +17,8 @@
     "nodemon": "^2.0.2"
   },
   "engines": {
-    "node": "12.*"
+    "yarn": "1.22.*",
+    "node": "12.13.*"
   },
   "main": "server.js"
 }
