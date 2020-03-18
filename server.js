@@ -8,7 +8,11 @@ const etag = require('koa-etag')
 const app = new Koa()
 const PORT = process.env.PORT || 5000
 const userAgent = require('koa2-useragent')
-
+app.use(async (ctx, next) => {
+  await next()
+  ctx.set('Cache-Control', 'public, max-age=31536000')
+  ctx.set('Expires', new Date(Date.now() + 31536000000).toUTCString())
+})
 app.use(conditional())
 app.use(etag())
 app.use(userAgent())

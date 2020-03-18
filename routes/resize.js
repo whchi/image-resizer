@@ -37,11 +37,8 @@ router.get('/gcs/:bucket/:imgPath/*', async (ctx, next) => {
     await img
       .toBuffer()
       .then(data => {
-        ctx.set('Cache-Control', 'public,max-age=2592000')
-        ctx.set(
-          'Expires',
-          new Date(Date.now() + 60 * 60 * 365 * 24).toUTCString()
-        )
+        // ctx.set('Cache-Control', 'public,max-age=31536000')
+        // ctx.set('Expires', new Date(Date.now() + 31536000000).toUTCString())
         ctx.type = format
         ctx.body = data
       })
@@ -66,12 +63,8 @@ router.get('/uri/:uri/*', async (ctx, next) => {
     await img
       .toBuffer()
       .then(data => {
-        ctx.set('Cache-Control', 'public,max-age=2592000')
-        ctx.set(
-          'Expires',
-          new Date(Date.now() + 60 * 60 * 365 * 24).toUTCString()
-        )
-        console.log('calles');
+        // ctx.set('Cache-Control', 'public, max-age=31536000')
+        // ctx.set('Expires', new Date(Date.now() + 31536000000).toUTCString())
         ctx.type = format
         ctx.body = data
       })
