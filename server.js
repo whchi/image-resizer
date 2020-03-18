@@ -6,7 +6,7 @@ const path = require('path')
 const serve = require('koa-static')
 const etag = require('koa-etag')
 const app = new Koa()
-
+const PORT = rocess.env.PORT || 5000
 const userAgent = require('koa2-useragent')
 
 app.use(conditional())
@@ -15,7 +15,6 @@ app.use(userAgent())
 app.use(resizeRouter.routes())
 // app.use(logger())
 app.use(serve(path.join(__dirname, 'public')))
-
-app.listen(5000, () => {
-  console.log('listen on 5000 port')
+app.listen(PORT, () => {
+  console.log(`listen on ${PORT} port`)
 })
