@@ -1,16 +1,3 @@
-const url = require('url')
-
-function getImageUri(baseHost, inputUri) {
-  let imageUrl = url.parse(inputUri)
-  imageUrl.host = baseHost.replace('https://', '').replace('http://', '')
-  imageUrl.protocol = baseHost.startsWith('https') ? 'https' : 'http'
-  return url.format(imageUrl)
-}
-
-function getMethods(obj) {
-  Object.getOwnPropertyNames(obj).filter(e => typeof obj[e] === 'function')
-}
-
 function getCommonParams(ctx) {
   const width = parseInt(ctx.request.query.w) || 50
   const height = parseInt(ctx.request.query.h) || 50
@@ -37,6 +24,9 @@ function checkParams(ctx) {
   if (ctx.request.url.indexOf('/resize/uri') > -1) {
     ctx.checkParams('uri').isURL()
   }
+  if (ctx.request.url.indexOf('/resize/gcs') > -1) {
+    ctx.checkParams('imgPath').isQueryString()
+  }
   return ctx.validationErrors()
 }
-module.exports = { getImageUri, getMethods, getCommonParams, checkParams }
+module.exports = { getCommonParams, checkParams }

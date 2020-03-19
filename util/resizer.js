@@ -8,10 +8,10 @@ module.exports = (imagePath, params) => {
       throw 'error happened'
     }
   })
-
   const transform = sharp().resize({
     width: params.width,
     height: params.height,
+    fit: params.fit || 'cover',
   })
   let type = 'webp'
   if (params.webp) {
@@ -33,6 +33,5 @@ module.exports = (imagePath, params) => {
   if (params.grayscale) {
     transform.grayscale()
   }
-
   return [res.pipe(transform), type]
 }
