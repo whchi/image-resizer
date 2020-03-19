@@ -8,6 +8,8 @@ const etag = require('koa-etag')
 const app = new Koa()
 const PORT = process.env.PORT || 5000
 const userAgent = require('koa2-useragent')
+
+app.use(logger())
 app.use(async (ctx, next) => {
   await next()
   ctx.set('Cache-Control', 'public,max-age=31536000')
@@ -17,7 +19,6 @@ app.use(conditional())
 app.use(etag())
 app.use(userAgent())
 app.use(resizeRouter.routes())
-app.use(logger())
 app.use(serve(path.join(__dirname, 'public')))
 app.listen(PORT, () => {
   console.log(`listen on ${PORT} port`)

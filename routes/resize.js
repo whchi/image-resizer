@@ -13,7 +13,7 @@ router.use(
         return value >= 0 && value <= 100
       },
       isQueryString: function(value) {
-        return /^\/(.*)\.(gif|jpg|jpeg|png)$/.test(value)
+        return /\/(.*)\.(gif|jpg|jpeg|png)$/i.test(value)
       },
     },
   })
@@ -69,7 +69,6 @@ router.get('/uri/:uri/*', async (ctx, next) => {
         ctx.body = 'error'
       })
   } catch (error) {
-    console.log(error)
     next(error)
   }
 })
