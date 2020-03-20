@@ -1,0 +1,8 @@
+runtime: nodejs12
+
+handlers:
+  - url: /images
+    static_dir: public/images
+    http_headers:
+      Cache-Control: 'public,max-age=31536000'
+
