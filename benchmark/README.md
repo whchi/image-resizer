@@ -4,7 +4,7 @@ brew install wrk
 ```
 2. get imglist
 ```sh
-cd test && node getimg.js
+node getimg.js
 ```
 3. run test
 ```sh
