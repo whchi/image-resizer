@@ -17,7 +17,7 @@ function download() {
           if (src.indexOf('https') < 0) {
             return
           }
-          request.get(src).pipe(fs.createWriteStream(`images/${fname}`))
+          request.get(src).pipe(fs.createWriteStream(`../public/images/${fname}`))
 
           let qs = ''
           simplerst.push(`/images/${fname}?t=now1`)
