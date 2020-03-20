@@ -20,7 +20,7 @@ function download() {
           request.get(src).pipe(fs.createWriteStream(`images/${fname}`))
 
           let qs = ''
-          simplerst.push(`/images/cw/${fname}`)
+          simplerst.push(`/images/${fname}?t=now1`)
           if (src.indexOf('storage.googleapis.com') > -1) {
             let fpath = src.substring('https://storage.googleapis.com/'.length)
             let bucket = fpath.split('/')[0]
@@ -30,7 +30,7 @@ function download() {
           } else {
             qs = `/resize/uri/${encodeURIComponent(src)}`
           }
-          rst.push(qs + '/?w=100&h=100')
+          rst.push(qs + '/?w=110&h=110')
         } catch (error) {
           return
         }

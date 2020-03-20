@@ -22,7 +22,10 @@ function checkParams(ctx) {
     .optional()
     .isQuality()
   if (ctx.request.url.indexOf('/resize/uri') > -1) {
-    ctx.checkParams('uri').isURL()
+    ctx
+      .checkParams('uri')
+      .isURL()
+      .isValidHost()
   }
   if (ctx.request.url.indexOf('/resize/gcs') > -1) {
     ctx.checkParams('imgPath').isQueryString()

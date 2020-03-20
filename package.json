@@ -3,6 +3,7 @@
   "description": "simple image resizer with koa and sharp",
   "dependencies": {
     "@koa/router": "^8.0.8",
+    "dotenv": "^8.2.0",
     "etag": "^1.8.1",
     "koa": "^2.11.0",
     "koa-async-validator": "^0.4.1",

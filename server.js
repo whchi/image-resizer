@@ -6,7 +6,7 @@ const path = require('path')
 const serve = require('koa-static')
 const etag = require('koa-etag')
 const app = new Koa()
-const PORT = process.env.PORT || 5000
+const PORT = process.env.PORT || 3000
 const userAgent = require('koa2-useragent')
 
 app.use(logger())

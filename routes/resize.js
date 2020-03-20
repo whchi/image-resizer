@@ -3,9 +3,12 @@ const koaValidator = require('koa-async-validator')
 const router = new Router({ prefix: '/resize' })
 const resize = require('../util/resizer')
 const { getCommonParams, checkParams } = require('../util/common')
+require('dotenv').config()
+
 router.get('/', async (ctx, next) => {
   ctx.body = 'success'
 })
+
 router.use(
   koaValidator({
     customValidators: {
@@ -14,6 +17,9 @@ router.use(
       },
       isQueryString: function(value) {
         return /\/(.*)\.(gif|jpg|jpeg|png)$/i.test(value)
+      },
+      isValidHost: function(value) {
+        return new RegExp(process.env.VALID_HOST).test(value)
       },
     },
   })
