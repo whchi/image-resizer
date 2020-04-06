@@ -7,3 +7,4 @@
 !.gitkeep
 .env
 **/benchmark/*.json
+k8s
