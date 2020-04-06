@@ -29,6 +29,9 @@ router.use(
       isValidHost: function (value) {
         return validHosts().test(value)
       },
+      isValidFit: function (value) {
+        return ['cover', 'contain', 'fill', 'inside', 'outside'].includes(value)
+      },
     },
   })
 )

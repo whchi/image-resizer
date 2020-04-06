@@ -25,6 +25,7 @@ function checkParams(ctx) {
   ctx.checkQuery('w').optional().isInt()
   ctx.checkQuery('q').optional().isQuality()
   ctx.checkQuery('format').optional().isValidFormat()
+  ctx.checkQuery('fit').optional().isValidFit()
 
   if (ctx.request.url.indexOf('/resize/uri') > -1) {
     ctx.checkParams('uri').isURL().isValidHost()
