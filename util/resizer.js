@@ -1,37 +1,34 @@
 const req = require('request')
 const sharp = require('sharp')
-const mime = require('mime-types')
 
-module.exports = (imagePath, params) => {
-  const res = req.get(imagePath).on('response', res => {
-    if (res.statusCode >= 400) {
-      throw 'error happened'
-    }
-  })
+module.exports = (imagePath, params, format) => {
+  const res = req.get(imagePath)
   const transform = sharp().resize({
     width: params.width,
     height: params.height,
-    fit: params.fit || 'cover',
+    fit: params.fit || 'contain',
   })
-  let type = 'webp'
-  if (params.webp) {
-    transform.webp()
-  } else {
-    const options = {
-      progressive: true,
-      quality: params.quality,
-      chromaSubsampling: params.quality >= 90 ? '4:2:0' : '4:4:4',
-    }
-    type = mime.lookup(imagePath)
+  const options = {
+    progressive: true,
+    quality: params.quality,
+    chromaSubsampling: params.quality >= 90 ? '4:2:0' : '4:4:4',
+  }
 
-    if (type === 'image/png') {
-      transform.png(options)
-    } else {
+  format = format.split('/').pop()
+
+  switch (format) {
+    case 'webp':
+      transform.webp()
+      break
+    case 'jpg':
+    case 'jpeg':
       transform.jpeg(options)
-    }
+      break
+    case 'png':
+      transform.png(options)
+      break
+    default:
+      throw Error(500)
   }
-  if (params.grayscale) {
-    transform.grayscale()
-  }
-  return [res.pipe(transform), type]
+  return res.pipe(transform)
 }
