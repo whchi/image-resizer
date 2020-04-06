@@ -8,3 +8,7 @@
 .env
 **/benchmark/*.json
 k8s
+.prettierrc
+.gcloudignore
+app.yml
+all.json
