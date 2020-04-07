@@ -1,15 +1,7 @@
 const MimeLite = require('mime/lite')
 
-function validHosts() {
-  return /(cw.com.tw|cwg.tw|ec.cw1.tw|commonhealth.com.tw|cheers.com.tw)/
-}
-
 function getMimeType(qs, raw) {
   return qs || MimeLite.getType(raw)
-}
-
-function validFileFormats() {
-  return ['gif', 'jpg', 'jpeg', 'png', 'webp']
 }
 
 function getCommonParams(ctx) {
@@ -38,7 +30,5 @@ function checkParams(ctx) {
 module.exports = {
   getCommonParams,
   checkParams,
-  validHosts,
-  validFileFormats,
   getMimeType,
 }
