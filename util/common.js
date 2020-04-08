@@ -1,9 +1,5 @@
 const MimeLite = require('mime/lite')
 
-function getMimeType(qs, raw) {
-  return qs || MimeLite.getType(raw)
-}
-
 function getCommonParams(ctx) {
   let width = parseInt(ctx.request.query.w) || 50
   let height = parseInt(ctx.request.query.h) || 50
@@ -30,5 +26,4 @@ function checkParams(ctx) {
 module.exports = {
   getCommonParams,
   checkParams,
-  getMimeType,
 }

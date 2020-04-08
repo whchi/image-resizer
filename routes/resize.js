@@ -3,11 +3,7 @@ const koaValidator = require('koa-async-validator')
 const router = new Router({ prefix: '/resize' })
 const resize = require('../util/resizer')
 const MimeLite = require('mime/lite')
-const { getCommonParams, checkParams, getMimeType } = require('../util/common')
-
-router.get('/', async (ctx, next) => {
-  ctx.body = 'success'
-})
+const { getCommonParams, checkParams } = require('../util/common')
 
 router.use(
   koaValidator({
