@@ -20,6 +20,7 @@ function checkParams(ctx) {
   }
   if (ctx.request.url.indexOf('/resize/gcs') > -1) {
     ctx.checkParams('imgPath').isQueryString()
+    ctx.checkParams('bucket').isValidBucket()
   }
   return ctx.validationErrors()
 }

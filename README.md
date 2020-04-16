@@ -1,9 +1,15 @@
 # RUN
 `yarn install` then `yarn start`
 
-# Usage
-* gcs: `/resize/gcs/{bucket}/{encodeURIComponent('your/img/path.png')}/?w=&h=`
-* general: host on server `/resize/uri/{encodeURIComponent(https://path/to/image.png)}/?w=&h=`
+# General Usage
+* gcs:
+```
+/resize/gcs/<bucket>/<encodeURIComponent('your/img/path.png')>/?w=&h=
+```
+* uri: host on server
+```
+/resize/uri/<encodeURIComponent(https://path/to/image.png)>/?w=&h=
+```
 
 ## available params
 | param  | desc                                                         | required |
@@ -16,7 +22,29 @@
 
 ## note
 php use `rawurlencode` as `encodeURIComponent`
-## Production
+## Production installation
 `yarn install --production`
-## reference
+# white list
+
+## add
+use `POST` method with body
+* headers
+```
+authorization: <token>
+```
+* path
+```
+/white-list
+```
+* request, neither of them are optional
+```json
+{
+  "hosts":["example.com", "test.com"],
+  "buckets": ["bucket1", "bucket2"]
+}
+```
+## get
+same as add but using GET
+
+# reference
 * [sharp.js official doc](https://sharp.pixelplumbing.com/)

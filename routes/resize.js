@@ -4,6 +4,8 @@ const router = new Router({ prefix: '/resize' })
 const resize = require('../util/resizer')
 const MimeLite = require('mime/lite')
 const { getCommonParams, checkParams } = require('../util/common')
+const url = require('url')
+const resolve = require('path').resolve
 
 router.use(
   koaValidator({
@@ -17,8 +19,12 @@ router.use(
       isValidFormat: function (value) {
         return ['gif', 'jpg', 'jpeg', 'png', 'webp'].includes(value)
       },
+      isValidBucket: function (value) {
+        return require(resolve('config/settings.json')).buckets.includes(value)
+      },
       isValidHost: function (value) {
-        return /(cw|commonhealth|cheers)\.com\.tw|(ec\.cw1|cwg)\.tw/.test(value)
+        let hostname = url.parse(value).hostname
+        return require(resolve('config/settings.json')).hosts.includes(hostname)
       },
       isValidFit: function (value) {
         return ['cover', 'contain', 'fill', 'inside', 'outside'].includes(value)

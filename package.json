@@ -6,6 +6,7 @@
     "etag": "^1.8.1",
     "koa": "^2.11.0",
     "koa-async-validator": "^0.4.1",
+    "koa-bodyparser": "^4.3.0",
     "koa-conditional-get": "^2.0.0",
     "koa-etag": "^3.0.0",
     "koa-logger": "2",
