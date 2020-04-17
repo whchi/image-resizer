@@ -1,8 +1,8 @@
 const MimeLite = require('mime/lite')
 
 function getCommonParams(ctx) {
-  let width = parseInt(ctx.request.query.w) || 50
-  let height = parseInt(ctx.request.query.h) || 50
+  let width = parseInt(ctx.request.query.w) || undefined
+  let height = parseInt(ctx.request.query.h) || undefined
   let quality = parseInt(ctx.request.query.q) || 80
   let format = ctx.request.query.format || undefined
 

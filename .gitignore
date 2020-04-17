@@ -12,3 +12,4 @@ k8s
 .gcloudignore
 app.yml
 all.json
+.idea
