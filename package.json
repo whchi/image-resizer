@@ -17,11 +17,15 @@
   },
   "devDependencies": {
     "cheerio": "^1.0.0-rc.3",
-    "nodemon": "^2.0.2"
+    "jest": "^25.3.0",
+    "nodemon": "^2.0.2",
+    "supertest": "^4.0.2"
   },
   "main": "server.js",
   "scripts": {
-    "start": "node server.js"
+    "test": "jest --config",
+    "start": "node server.js",
+    "start-dev": "./node_modules/.bin/nodemon server.js"
   },
   "engines": {
     "node": "12.*"

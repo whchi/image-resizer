@@ -1,0 +1,22 @@
+const Koa = require('koa')
+const conditional = require('koa-conditional-get')
+const logger = require('koa-logger')
+const resizeRouter = require('./routes/resize')
+const rootRouter = require('./routes/root')
+const path = require('path')
+const serve = require('koa-static')
+const etag = require('koa-etag')
+const app = new Koa()
+
+app.use(logger())
+app.use(async (ctx, next) => {
+  await next()
+  ctx.set('Cache-Control', 'public,max-age=31536000')
+  ctx.set('Expires', new Date(Date.now() + 31536000000).toUTCString())
+})
+app.use(conditional())
+app.use(etag())
+app.use(rootRouter.routes())
+app.use(resizeRouter.routes())
+app.use(serve(path.join(__dirname, 'public')))
+module.exports = app

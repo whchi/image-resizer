@@ -63,7 +63,6 @@ router
       ctx.status = 404
       return
     }
-    console.log(require(resolve('config/settings.json')))
     let toDisplay = {}
     Object.assign(toDisplay, settings)
     delete toDisplay.token
