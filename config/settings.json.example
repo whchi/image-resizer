@@ -1,0 +1,5 @@
+{
+  "buckets": ["bucket1", "bucket2"],
+  "hosts": ["host1", "host2"],
+  "token": "random-generate-token"
+}
