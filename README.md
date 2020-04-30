@@ -17,8 +17,8 @@
 | w      | width,numeric                                                |    v     |
 | h      | height,numeric                                               |    v     |
 | q      | quality,0 ~ 100                                              |          |
-| fit    | fit, `cover|contain|fill|inside|outside`, default: `contain` |          |
-| format | format, string, `webp|jpg|jpeg|gif|png`, lowercase           |          |
+| fit    | fit, `cover\|contain\|fill\|inside\|outside`, default: `contain` |          |
+| format | format, string, `webp\|jpg\|jpeg\|gif\|png`, lowercase           |          |
 
 ## note
 php use `rawurlencode` as `encodeURIComponent`
