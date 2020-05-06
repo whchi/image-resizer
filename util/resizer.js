@@ -11,6 +11,7 @@ module.exports = (imagePath, params, format) => {
   const options = {
     progressive: true,
     quality: params.quality,
+    withoutEnlargement: true,
     chromaSubsampling: params.quality >= 90 ? '4:2:0' : '4:4:4',
   }
 
