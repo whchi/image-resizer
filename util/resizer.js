@@ -1,7 +1,7 @@
-const req = require('request')
-const sharp = require('sharp')
+import req from 'request'
+import sharp from 'sharp'
 
-module.exports = (imagePath, params, format) => {
+export const resize = (imagePath, params, format) => {
   const res = req.get(imagePath)
   const transform = sharp().resize({
     width: params.width,

@@ -1,11 +1,11 @@
-const Router = require('@koa/router')
-const koaValidator = require('koa-async-validator')
-const router = new Router({ prefix: '/resize' })
-const resize = require('../util/resizer')
-const MimeLite = require('mime/lite')
-const { getCommonParams, checkParams } = require('../util/common')
-const url = require('url')
+import Router from '@koa/router'
+import koaValidator from 'koa-async-validator'
+import { resize } from '../util/resizer'
+import MimeLite from 'mime/lite'
+import { getCommonParams, checkParams } from '../util/common'
+import url from 'url'
 const resolve = require('path').resolve
+const router = new Router({ prefix: '/resize' })
 
 router.use(
   koaValidator({
@@ -61,8 +61,10 @@ router.get('/gcs/:bucket/:imgPath/*', async (ctx, next) => {
     next(error)
   }
 })
+
 router.get('/uri/:uri/*', async (ctx, next) => {
   const errors = await checkParams(ctx)
+
   if (errors) {
     ctx.throw(400)
   }
@@ -86,4 +88,4 @@ router.get('/uri/:uri/*', async (ctx, next) => {
   }
 })
 
-module.exports = router
+export default router

@@ -12,30 +12,20 @@
 ```
 
 ## available params
-| param  | desc                                                         | required |
-| :----- | :----------------------------------------------------------- | :------: |
-| w      | width,numeric                                                |    v     |
-| h      | height,numeric                                               |    v     |
-| q      | quality,0 ~ 100                                              |          |
+| param  | desc                                                             | required |
+| :----- | :--------------------------------------------------------------- | :------: |
+| w      | width,numeric                                                    |    v     |
+| h      | height,numeric                                                   |    v     |
+| q      | quality,0 ~ 100                                                  |          |
 | fit    | fit, `cover\|contain\|fill\|inside\|outside`, default: `contain` |          |
 | format | format, string, `webp\|jpg\|jpeg\|gif\|png`, lowercase           |          |
 
 ## note
 php use `rawurlencode` as `encodeURIComponent`
-## Production installation
-`yarn install --production`
-# white list
 
-## add
-use `POST` method with body
-* headers
-```
-authorization: <token>
-```
-* path
-```
-/white-list
-```
+## Production installation
+`npm ci`
+
 * request, neither of them are optional
 ```json
 {

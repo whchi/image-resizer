@@ -1,11 +1,11 @@
-const Koa = require('koa')
-const conditional = require('koa-conditional-get')
-const logger = require('koa-logger')
-const resizeRouter = require('./routes/resize')
-const rootRouter = require('./routes/root')
-const path = require('path')
-const serve = require('koa-static')
-const etag = require('koa-etag')
+import Koa from 'koa'
+import conditional from 'koa-conditional-get'
+import logger from 'koa-logger'
+import resizeRouter from './routes/resize'
+import rootRouter from './routes/root'
+import path from 'path'
+import serve from 'koa-static'
+import etag from 'koa-etag'
 const app = new Koa()
 
 app.use(logger())
@@ -19,4 +19,5 @@ app.use(etag())
 app.use(rootRouter.routes())
 app.use(resizeRouter.routes())
 app.use(serve(path.join(__dirname, 'public')))
-module.exports = app
+
+export default app

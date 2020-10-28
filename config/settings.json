@@ -1,0 +1,4 @@
+{
+  "buckets": ["bucket1", ""],
+  "hosts": ["host1", "storage.googleapis.com", "ec.cw1.tw"]
+}

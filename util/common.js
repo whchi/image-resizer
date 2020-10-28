@@ -1,6 +1,4 @@
-const MimeLite = require('mime/lite')
-
-function getCommonParams(ctx) {
+export function getCommonParams(ctx) {
   let width = parseInt(ctx.request.query.w) || undefined
   let height = parseInt(ctx.request.query.h) || undefined
   let quality = parseInt(ctx.request.query.q) || 80
@@ -8,7 +6,7 @@ function getCommonParams(ctx) {
 
   return { width, height, quality, format }
 }
-function checkParams(ctx) {
+export function checkParams(ctx) {
   ctx.checkQuery('h').optional().isInt()
   ctx.checkQuery('w').optional().isInt()
   ctx.checkQuery('q').optional().isQuality()
@@ -23,8 +21,4 @@ function checkParams(ctx) {
     ctx.checkParams('bucket').isValidBucket()
   }
   return ctx.validationErrors()
-}
-module.exports = {
-  getCommonParams,
-  checkParams,
 }

@@ -13,3 +13,4 @@ k8s
 app.yml
 all.json
 .idea
+**/coverage

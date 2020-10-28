@@ -10,14 +10,19 @@
     "koa-conditional-get": "^2.0.0",
     "koa-etag": "^3.0.0",
     "koa-logger": "2",
-    "koa-static": "^5.0.0",
-    "mime": "^2.4.4",
+    "mime": "^2.4.6",
     "request": "^2.88.2",
     "sharp": "^0.24.1"
   },
   "devDependencies": {
+    "@babel/cli": "^7.12.1",
+    "@babel/core": "^7.12.1",
+    "@babel/node": "^7.12.1",
+    "@babel/preset-env": "^7.12.1",
+    "babel-jest": "^26.6.1",
     "cheerio": "^1.0.0-rc.3",
     "jest": "^25.3.0",
+    "koa-static": "^5.0.0",
     "nodemon": "^2.0.2",
     "supertest": "^4.0.2"
   },
@@ -25,7 +30,7 @@
   "scripts": {
     "test": "jest --config",
     "start": "node server.js",
-    "start-dev": "./node_modules/.bin/nodemon server.js"
+    "start:dev": "nodemon --exec babel-node server.js"
   },
   "engines": {
     "node": "12.*"
