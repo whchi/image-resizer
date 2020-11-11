@@ -1,5 +1,8 @@
-# RUN
-`yarn install` then `yarn start`
+# Up & running
+* develop
+`npm i` && `npm start:dev`
+* production 
+`npm ci` && `npm start`
 
 # General Usage
 * gcs:
@@ -22,9 +25,6 @@
 
 ## note
 php use `rawurlencode` as `encodeURIComponent`
-
-## Production installation
-`npm ci`
 
 * request, neither of them are optional
 ```json
