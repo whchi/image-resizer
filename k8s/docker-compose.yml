@@ -1,0 +1,7 @@
+version: '3.7'
+services:
+  mongo:
+    image: local_image_resizer:0.0.1
+    ports:
+      - '3000:3000'
+    container_name: local_img_resizer

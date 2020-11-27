@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: image-resizer-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: image-resizer-app
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
+  minReadySeconds: 5
+  template:
+    metadata:
+      labels:
+        app: image-resizer-app
+    spec:
+      containers:
+        - name: node
+          image: image-resizer:0.0.1
+          imagePullPolicy: IfNotPresent
+          resources:
+            requests:
+              cpu: 1
+          ports:
+            - containerPort: 3000
+              protocol: TCP
+          workingDir: /code
+          command:
+            - 'node'
+          args:
+            - 'server.js'
